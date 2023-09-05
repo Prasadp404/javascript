@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+    <title>Keyword Matching</title>
+</head>
+<body>
+    <h1>Keyword Matching Game</h1>
+    <p>Try to guess the stored keyword within 3 attempts:</p>
+    <input type="text" id="userInput">
+    <button onclick="checkKeyword()">Submit</button>
+    <p id="result"></p>
+
+    <script>
+        // Store the keyword in a variable
+        const storedKeyword = "secret";
+
+        let attempts = 3;
+
+        function checkKeyword() {
+            const userInput = document.getElementById('userInput').value;
+
+            if (userInput === storedKeyword) {
+                document.getElementById('result').textContent = "Congratulations! You guessed the keyword.";
+            } else {
+                attempts--;
+
+                if (attempts === 0) {
+                    document.getElementById('result').textContent = "Sorry, you've run out of attempts. The keyword was '" + storedKeyword + "'.";
+                    document.getElementById('userInput').disabled = true;
+                } else {
+                    document.getElementById('result').textContent = "Incorrect! You have " + attempts + " attempts left.";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
