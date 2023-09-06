@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stack and Queue Operations</title>
+</head>
+<body>
+    <h1>Stack and Queue Operations</h1>
+    <button onclick="menu()">Menu</button>
+    <p id="result"></p>
+
+    <script>
+        const stack = [];
+        const queue = [];
+
+        function menu() {
+            const choice = prompt(`Choose an operation:
+            1. Insert an element in stack
+            2. Delete an element from stack
+            3. Display the contents of stack
+            4. Insert an element in queue
+            5. Delete an element from queue
+            6. Display the contents of queue
+            7. Exit`);
+
+            switch (choice) {
+                case '1':
+                    const stackElement = prompt("Enter an element to insert into the stack:");
+                    stack.push(stackElement);
+                    menu();
+                    break;
+
+                case '2':
+                    if (stack.length > 0) {
+                        const deletedStackElement = stack.pop();
+                        alert(`Deleted from stack: ${deletedStackElement}`);
+                    } else {
+                        alert("Stack is empty.");
+                    }
+                    menu();
+                    break;
+
+                case '3':
+                    if (stack.length > 0) {
+                        document.getElementById('result').textContent = `Stack: ${stack.join(', ')}`;
+                    } else {
+                        document.getElementById('result').textContent = "Stack is empty.";
+                    }
+                    menu();
+                    break;
+
+                case '4':
+                    const queueElement = prompt("Enter an element to insert into the queue:");
+                    queue.push(queueElement);
+                    menu();
+                    break;
+
+                case '5':
+                    if (queue.length > 0) {
+                        const deletedQueueElement = queue.shift();
+                        alert(`Deleted from queue: ${deletedQueueElement}`);
+                    } else {
+                        alert("Queue is empty.");
+                    }
+                    menu();
+                    break;
+
+                case '6':
+                    if (queue.length > 0) {
+                        document.getElementById('result').textContent = `Queue: ${queue.join(', ')}`;
+                    } else {
+                        document.getElementById('result').textContent = "Queue is empty.";
+                    }
+                    menu();
+                    break;
+
+                case '7':
+                    break;
+
+                default:
+                    alert("Invalid choice. Please select a valid option.");
+                    menu();
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>

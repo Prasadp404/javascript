@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Date Greetings</title>
+</head>
+<body>
+    <h1>Date Greetings</h1>
+    <label for="date">Enter a date (MM/DD):</label>
+    <input type="text" id="dateInput">
+    <button onclick="checkDate()">Check</button>
+    <p id="result"></p>
+
+    <script>
+        function checkDate() {
+            const dateInput = document.getElementById('dateInput').value;
+            const dateParts = dateInput.split('/');
+            if (dateParts.length === 2) {
+                const month = parseInt(dateParts[0]);
+                const day = parseInt(dateParts[1]);
+
+                if (month === 1 && day === 1) {
+                    document.getElementById('result').textContent = "Happy New Year!";
+                } else if (month === 12 && day === 25) {
+                    document.getElementById('result').textContent = "Merry Christmas!";
+                } else if (month === 1 && day === 14) {
+                    document.getElementById('result').textContent = "Happy Makarsankranti!";
+                } else if (month === 12 && day ===23) {
+                    document.getElementById('result').textContent = "HAPPY BIRTHDAY PRASAD!";
+                }
+				else {
+                    document.getElementById('result').textContent = "Have a Good Day!";
+                }
+            } else {
+                document.getElementById('result').textContent = "Invalid date format. Please use MM/DD format.";
+            }
+        }
+    </script>
+</body>
+</html>
