@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Array Statistics</title>
+</head>
+<body>
+    <h1>Array Statistics</h1>
+    <label for="numbers">Enter numbers (comma-separated):</label>
+    <input type="text" id="numbersInput">
+    <button onclick="calculateStatistics()">Calculate</button>
+    <br>
+    <p id="result"></p>
+
+    <script>
+        function calculateStatistics() {
+            const numbersInput = document.getElementById('numbersInput').value;
+            const numbersArray = numbersInput.split(',').map(Number);
+
+            if (numbersArray.some(isNaN)) {
+                alert("Please enter valid numbers separated by commas.");
+                return;
+            }
+
+            const max = Math.max(...numbersArray);
+            const min = Math.min(...numbersArray);
+            const sum = numbersArray.reduce((acc, num) => acc + num, 0);
+            const average = sum / numbersArray.length;
+
+            document.getElementById('result').textContent = `
+                Maximum: ${max}
+                Minimum: ${min}
+                Sum: ${sum}
+                Average: ${average.toFixed(2)}
+            `;
+        }
+    </script>
+</body>
+</html>
